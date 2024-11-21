@@ -31,40 +31,37 @@ public class Lets_Make_A_Deal_Main {
      * recall the method to
      * generate new random strings, unless there is a more effective way
      */
-public static void initialize_game(Scanner input) {
-prize = gen_random(1,3);
-/*
-* This is calling the gen_random method to create a prize, the min is
-1 and the max is 3
-*/
-System.out.println("Pick a door! Enter either 1, 2 or 3... Choose wisely");
-user_pick = get_user_input(input, 1, 3);
-//System.out.println(prize + " " + user_pick);
-}
+    public static void initialize_game(Scanner input) {
+        prize = gen_random(1, 3);
+        /*
+         * This is calling the gen_random method to create a prize, the min is
+         * 1 and the max is 3
+         */
+        System.out.println("Pick a door! Enter either 1, 2 or 3... Choose wisely");
+        user_pick = get_user_input(input, 1, 3);
+        // System.out.println(prize + " " + user_pick);
+    }
 
-public static int get_user_input(Scanner input, int min, int max) {
-int val = min - 1;
-do {
-try {
-System.out.println("Enter a number between " + min + " and " + max);
-val=input.nextInt();
-}
-catch(Exception e) {
-System.out.println("Invalid entry, try entering an integer.");
-/*
-* if an exception occurs, go to here (catch), if anything
-goes wrong, enter statement
-* and tell them to do it again. It will not change the
-value of the variable called val
-*/
-}
-finally {
-input.nextLine();
-}
-}
-while(val < min || val > max);
-return val;
-}
+    public static int get_user_input(Scanner input, int min, int max) {
+        int val = min - 1;
+        do {
+            try {
+                System.out.println("Enter a number between " + min + " and " + max);
+                val = input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid entry, try entering an integer.");
+                /*
+                 * if an exception occurs, go to here (catch), if anything
+                 * goes wrong, enter statement
+                 * and tell them to do it again. It will not change the
+                 * value of the variable called val
+                 */
+            } finally {
+                input.nextLine();
+            }
+        } while (val < min || val > max);
+        return val;
+    }
 
     public static int gen_random(int min, int max) {
         Random rand = new Random();
@@ -77,22 +74,22 @@ return val;
         return rand_val;
     }
 
-public static String booby_prize() {
-String[] boobyPrizes = {
-    "a used napkin!", 
-    "a jar of unflavored jellybeans!", 
-    "a collection of crappy John Mayer albums!", 
-    "a roll of one ply toilet paper!", 
-    "an old sock!"};
-Random rand = new Random();
-int picker = rand.nextInt(boobyPrizes.length);
-/*
-* picks from a random list of strings (boobyPrizes)
-* Stack Overflow: https://stackoverflow.com/questions/6726963/random-
-string-from-string-array-list
-*/
-return boobyPrizes[picker];
-}
+    public static String booby_prize() {
+        String[] boobyPrizes = {
+                "a used napkin!",
+                "a jar of unflavored jellybeans!",
+                "a collection of crappy John Mayer albums!",
+                "a roll of one ply toilet paper!",
+                "an old sock!" };
+        Random rand = new Random();
+        int picker = rand.nextInt(boobyPrizes.length);
+        /*
+         * picks from a random list of strings (boobyPrizes)
+         * Stack Overflow: https://stackoverflow.com/questions/6726963/random-
+         * string-from-string-array-list
+         */
+        return boobyPrizes[picker];
+    }
 
     public static void show_door() {
         /*
